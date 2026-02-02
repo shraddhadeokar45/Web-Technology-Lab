@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Cricket Academy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f4f7fb;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+            color: white;
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: 28px;
+            letter-spacing: 1px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 500;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            width: 0;
+            height: 2px;
+            background: #ffcc00;
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            transition: 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 90vh;
+            background: url('https://iigsports.in/updates/wp-content/uploads/2025/06/From-Beginner-to-Pro.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            padding: 0 60px;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            background: rgba(0,0,0,0.5);
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        .hero-content h2 {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .hero-content p {
+            font-size: 16px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .hero-content button {
+            padding: 12px 25px;
+            border: none;
+            background: #ffcc00;
+            color: #000;
+            font-size: 16px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .hero-content button:hover {
+            background: #e6b800;
+            transform: scale(1.05);
+        }
+
+        /* Sections */
+        section {
+            padding: 60px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 40px;
+            color: #203a43;
+        }
+
+        /* Programs */
+        .programs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .program-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .program-card h3 {
+            margin-bottom: 10px;
+            color: #2c5364;
+        }
+
+        /* Coaches */
+        .coaches {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .coach-card {
+            background: white;
+            width: 260px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+
+        .coach-card:hover {
+            transform: scale(1.05);
+        }
+
+        .coach-card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+
+        .coach-card div {
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Contact */
+        .contact {
+            background: #203a43;
+            color: white;
+            border-radius: 20px;
+        }
+
+        .contact form {
+            max-width: 600px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact input, .contact textarea {
+            padding: 12px;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+        }
+
+        .contact button {
+            padding: 12px;
+            background: #ffcc00;
+            border: none;
+            border-radius: 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #0f2027;
+            color: white;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Master Cricket Academy</h1>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#programs">Programs</a>
+        <a href="#coaches">Coaches</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<div class="hero">
+    <div class="hero-content">
+        
+    </div>
+</div>
+
+<section id="programs">
+    <h2 class="section-title">Our Programs</h2>
+    <div class="programs">
+        <div class="program-card">
+            <h3>Beginner Training</h3>
+            <p>Perfect for young players starting their cricket journey.</p>
+        </div>
+        <div class="program-card">
+            <h3>Advanced Coaching</h3>
+            <p>Professional training for competitive and league-level players.</p>
+        </div>
+        <div class="program-card">
+            <h3>Fitness & Conditioning</h3>
+            <p>Improve strength, stamina, and agility.</p>
+        </div>
+    </div>
+</section>
+
+<section id="coaches">
+    <h2 class="section-title">Our Coaches</h2>
+    <div class="coaches">
+        <div class="coach-card">
+            <img src="https://cdn.siasat.com/wp-content/uploads/2020/05/sACHIN-tENDULKAR.jpg" alt="Coach">
+            <div>
+                <h3>Sachin Tendulkar</h3>
+                <p>Batting Coach</p>
+            </div>
+        </div>
+        <div class="coach-card">
+            <img src="https://www.mumbaiindians.com/static-assets/waf-images/89/73/73/16-9/1920-1080/EpoKMHyBvr.jpg" alt="Coach">
+            <div>
+                <h3>Jasprit Bumrah</h3>
+                <p>Bowling Caoch</p>
+            </div>
+        </div>
+        <div class="coach-card">
+            <img src="https://cdn.britannica.com/43/271843-050-59CD91FF/Yuvraj-Singh-poses-prior-to-February-2018-Laureus-World-Sports-Awards-Monaco.jpg" alt="Coach">
+            <div>
+                <h3>Yuvraj Singh</h3>
+                <p>Fielding Coach</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="contact">
+    <h2 class="section-title" style="color:white">Contact Us</h2>
+    <form>
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea rows="4" placeholder="Your Message"></textarea>
+        <button type="submit">Send Message</button>
+    </form>
+</section>
+
+<footer>
+    <p>© 2026 Master Cricket Academy | All Rights Reserved</p>
+</footer>
+
+</body>
+</html>
