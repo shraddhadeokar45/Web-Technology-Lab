@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CASIO Calculator</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+/* ================= BACKGROUND ================= */
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at top, #1b2735, #090a0f);
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* ================= CALCULATOR CARD ================= */
+.calculator {
+    width: 340px;
+    padding: 22px;
+    border-radius: 18px;
+    background: #0f172a;
+    border-top: 4px solid #22d3ee;
+    box-shadow:
+        0 20px 40px rgba(0,0,0,0.8),
+        0 0 20px rgba(34,211,238,0.4);
+}
+
+/* ================= DISPLAY ================= */
+.display {
+    height: 75px;
+    border-radius: 12px;
+    background: #020617;
+    color: #22d3ee;
+    font-size: 34px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 2px;
+    box-shadow: inset 0 0 15px rgba(34,211,238,0.3);
+    overflow-x: auto;
+}
+
+/* ================= BUTTON GRID ================= */
+.buttons {
+    margin-top: 18px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+}
+
+/* ================= BUTTON ================= */
+button {
+    height: 58px;
+    border-radius: 50%;
+    border: none;
+    font-size: 18px;
+    color: #e5e7eb;
+    cursor: pointer;
+    background: #1e293b;
+    box-shadow:
+        inset 0 -4px 0 rgba(0,0,0,0.5),
+        0 6px 10px rgba(0,0,0,0.6);
+    transition: 0.15s;
+}
+
+button:hover {
+    background: #334155;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+/* ================= SPECIAL BUTTONS ================= */
+.operator {
+    background: #0ea5e9;
+    color: #020617;
+    font-weight: bold;
+}
+
+.equal {
+    grid-column: span 2;
+    border-radius: 30px;
+    background: #22d3ee;
+    color: #020617;
+    font-weight: bold;
+}
+
+.clear {
+    background: #ef4444;
+    color: white;
+}
+</style>
+</head>
+
+<body>
+
+<div class="calculator">
+    <div class="display" id="display">0</div>
+
+    <div class="buttons">
+        <button class="clear" onclick="clearDisplay()">C</button>
+        <button onclick="deleteLast()">⌫</button>
+        <button class="operator" onclick="appendValue('%')">%</button>
+        <button class="operator" onclick="appendValue('/')">÷</button>
+
+        <button onclick="appendValue('7')">7</button>
+        <button onclick="appendValue('8')">8</button>
+        <button onclick="appendValue('9')">9</button>
+        <button class="operator" onclick="appendValue('*')">×</button>
+
+        <button onclick="appendValue('4')">4</button>
+        <button onclick="appendValue('5')">5</button>
+        <button onclick="appendValue('6')">6</button>
+        <button class="operator" onclick="appendValue('-')">−</button>
+
+        <button onclick="appendValue('1')">1</button>
+        <button onclick="appendValue('2')">2</button>
+        <button onclick="appendValue('3')">3</button>
+        <button class="operator" onclick="appendValue('+')">+</button>
+
+        <button onclick="appendValue('0')">0</button>
+        <button onclick="appendValue('.')">.</button>
+        <button class="equal" onclick="calculate()">=</button>
+    </div>
+</div>
+
+<script>
+let display = document.getElementById("display");
+
+function appendValue(value) {
+    if (display.innerText === "0") {
+        display.innerText = value;
+    } else {
+        display.innerText += value;
+    }
+}
+
+function clearDisplay() {
+    display.innerText = "0";
+}
+
+function deleteLast() {
+    display.innerText = display.innerText.slice(0, -1) || "0";
+}
+
+function calculate() {
+    try {
+        display.innerText = eval(display.innerText);
+    } catch {
+        display.innerText = "Error";
+    }
+}
+
+/* Keyboard Support */
+document.addEventListener("keydown", (e) => {
+    if ("0123456789+-*/.%".includes(e.key)) appendValue(e.key);
+    if (e.key === "Enter") calculate();
+    if (e.key === "Backspace") deleteLast();
+    if (e.key === "Escape") clearDisplay();
+});
+</script>
+
+</body>
+</html>
