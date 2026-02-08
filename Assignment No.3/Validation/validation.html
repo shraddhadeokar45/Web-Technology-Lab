@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Library Management System</title>
+
+<style>
+    body {
+        background: linear-gradient(135deg, #1d2671, #c33764);
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .form-box {
+        background: #ffffff;
+        padding: 25px 30px;
+        width: 420px;
+        border-radius: 15px;
+        box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        animation: fadeIn 0.8s ease;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    h2 {
+        text-align: center;
+        color: #1d2671;
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    input, select {
+        width: 100%;
+        padding: 9px;
+        margin-top: 5px;
+        margin-bottom: 4px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        transition: 0.3s;
+    }
+
+    input:focus, select:focus {
+        border-color: #1d2671;
+        box-shadow: 0 0 6px rgba(29,38,113,0.5);
+        outline: none;
+    }
+
+    .error {
+        color: red;
+        font-size: 12px;
+        display: none;
+        margin-bottom: 8px;
+    }
+
+    .valid {
+        border-color: green !important;
+    }
+
+    .invalid {
+        border-color: red !important;
+    }
+
+    .gender {
+        margin-bottom: 10px;
+    }
+
+    .gender input {
+        width: auto;
+        margin-right: 4px;
+    }
+
+    button {
+        width: 100%;
+        padding: 11px;
+        background: linear-gradient(to right, #1d2671, #c33764);
+        color: white;
+        font-size: 16px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        transform: scale(1.03);
+        box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    }
+</style>
+</head>
+
+<body>
+
+<div class="form-box">
+    <h2>Library Registration</h2>
+
+    <form onsubmit="return validateForm()">
+
+        <label>Student Name</label>
+        <input type="text" id="name" oninput="checkField(this)">
+        <div class="error">Name is required</div>
+
+        <label>Email</label>
+        <input type="email" id="email" oninput="checkField(this)">
+        <div class="error">Email is required</div>
+
+        <label>Roll Number</label>
+        <input type="text" id="roll" oninput="checkField(this)">
+        <div class="error">Roll number is required</div>
+
+        <label>Department</label>
+        <select id="department" onchange="checkField(this)">
+            <option value="">-- Select Department --</option>
+            <option>Information Technology</option>
+            <option>Mechanical</option>
+            <option>Civil</option>
+            <option>Computer</option>
+            <option>Mechatronics</option>
+            <option>Structural</option>
+            <option>Electrical</option>
+        </select>
+        <div class="error">Please select department</div>
+
+        <label>Year</label>
+        <select id="year" onchange="checkField(this)">
+            <option value="">-- Select Year --</option>
+            <option>First Year</option>
+            <option>Second Year</option>
+            <option>Third Year</option>
+            <option>Final Year</option>
+        </select>
+        <div class="error">Please select year</div>
+
+        <label>Library Card Type</label>
+        <select id="card" onchange="checkField(this)">
+            <option value="">-- Select Card Type --</option>
+            <option>Regular</option>
+            <option>DSY</option>
+        </select>
+        <div class="error">Please select card type</div>
+
+        <label>Gender</label>
+        <div class="gender">
+            <input type="radio" name="gender"> Male
+            <input type="radio" name="gender"> Female
+        </div>
+
+        <button type="submit">Register</button>
+    </form>
+</div>
+
+<script>
+function checkField(input) {
+    let error = input.nextElementSibling;
+    if (input.value.trim() === "") {
+        input.classList.add("invalid");
+        input.classList.remove("valid");
+        if (error) error.style.display = "block";
+    } else {
+        input.classList.add("valid");
+        input.classList.remove("invalid");
+        if (error) error.style.display = "none";
+    }
+}
+
+function validateForm() {
+    let inputs = document.querySelectorAll("input, select");
+    let gender = document.querySelector('input[name="gender"]:checked');
+
+    for (let input of inputs) {
+        if (input.value === "") {
+            alert("⚠️ Please fill all the fields!");
+            return false;
+        }
+    }
+
+    if (gender === null) {
+        alert("⚠️ Please select gender!");
+        return false;
+    }
+
+    alert("✅ Library Registration Successful!");
+    return true;
+}
+</script>
+
+</body>
+</html>
