@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Task Management - Eng Dept</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="container">
+        <header class="glass-header">
+            <div>
+                <h1>Engineering Dept. Tasks</h1>
+                <p style="margin: 0.5rem 0 0 0; color: #6b7280;">Manage and track faculty assignments</p>
+            </div>
+            <a th:href="@{/showNewTaskForm}" class="btn-primary">+ Assign New Task</a>
+        </header>
+
+        <div class="tasks-grid">
+            <div th:each="task : ${listTasks}" class="task-card">
+                <div class="task-category" th:text="${task.category}">Category</div>
+                <h2 class="task-title" th:text="${task.title}">Task Title</h2>
+                <p class="task-desc" th:text="${task.description}">Task Description</p>
+                
+                <div class="task-meta">
+                    <div class="assignee">
+                        <div class="avatar" th:text="${#strings.substring(task.employee.name,0,1)}">A</div>
+                        <span th:text="${task.employee.name}">Employee Name</span>
+                    </div>
+                </div>
+
+                <div class="task-meta" style="margin-bottom: 1rem;">
+                    <div>
+                        <span style="color: #6b7280; font-size: 0.8rem;">Deadline:</span><br>
+                        <strong th:text="${#temporals.format(task.dueDate, 'dd MMM yyyy')}">12 Oct 2026</strong>
+                    </div>
+                    <div>
+                        <span th:if="${task.status == 'Pending'}" class="badge badge-pending">Pending</span>
+                        <span th:if="${task.status == 'In Progress'}" class="badge badge-progress">In Progress</span>
+                        <span th:if="${task.status == 'Completed'}" class="badge badge-completed">Completed</span>
+                    </div>
+                </div>
+
+                <div class="task-actions">
+                    <a th:href="@{/showFormForUpdate/{id}(id=${task.id})}" class="btn-small btn-edit">Edit Task</a>
+                    <a th:href="@{/deleteTask/{id}(id=${task.id})}" class="btn-small btn-delete" onclick="return confirm('Are you sure you want to delete this task?')">Delete</a>
+                </div>
+            </div>
+            
+            <div th:if="${#lists.isEmpty(listTasks)}" style="grid-column: 1 / -1; text-align: center; padding: 4rem; background: var(--card-bg); border-radius: 1rem; border: 1px dashed var(--primary-color);">
+                <h3 style="color: var(--text-muted);">No tasks found</h3>
+                <p style="color: #9ca3af;">Click "Assign New Task" to get started.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
