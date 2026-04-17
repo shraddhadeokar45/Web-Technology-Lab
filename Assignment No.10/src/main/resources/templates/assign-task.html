@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assign Task - Employee Task Management</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="container">
+        <header class="glass-header" style="justify-content: center; margin-bottom: 2rem;">
+            <h1>Assign / Update Task</h1>
+        </header>
+
+        <div class="form-container">
+            <form action="#" th:action="@{/saveTask}" th:object="${task}" method="POST">
+                
+                <!-- Add hidden form field to handle update -->
+                <input type="hidden" th:field="*{id}" />
+                
+                <div class="form-group">
+                    <label for="title">Task Title</label>
+                    <input type="text" id="title" th:field="*{title}" class="form-control" placeholder="e.g. Midterm Evaluation" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Task Category</label>
+                    <select id="category" th:field="*{category}" class="form-control" required>
+                        <option value="Exam Duty">Exam Duty</option>
+                        <option value="Project Guide">Project Guide</option>
+                        <option value="Documentation">Documentation</option>
+                        <option value="Event Coordination">Event Coordination</option>
+                        <option value="Report Submission">Report Submission</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Detailed Description</label>
+                    <textarea id="description" th:field="*{description}" class="form-control" rows="4" placeholder="Provide task particulars..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="employee">Assign To (Faculty Member)</label>
+                    <select id="employee" th:field="*{employee}" class="form-control" required>
+                        <option value="">-- Select Faculty --</option>
+                        <option th:each="emp : ${employees}" th:value="${emp.id}" th:text="${emp.name + ' (' + emp.department + ')'}">
+                        </option>
+                    </select>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div class="form-group">
+                        <label for="dueDate">Deadline</label>
+                        <input type="date" id="dueDate" th:field="*{dueDate}" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="status">Current Status</label>
+                        <select id="status" th:field="*{status}" class="form-control" required>
+                            <option value="Pending">Pending</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Completed">Completed</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="actions">
+                    <button type="submit" class="btn-primary" style="flex: 1;">Save Task</button>
+                    <a th:href="@{/}" class="btn-secondary" style="flex: 1; text-align: center;">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
