@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bookstore Management System</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #74ebd5, #ACB6E5);
+            text-align: center;
+        }
+
+        .header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .container {
+            margin-top: 80px;
+        }
+
+        h2 {
+            color: #2c3e50;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            margin: 15px;
+            font-size: 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            color: white;
+            transition: 0.3s;
+        }
+
+        .view {
+            background-color: #3498db;
+        }
+
+        .add {
+            background-color: #2ecc71;
+        }
+
+        .edit {
+            background-color: #f39c12;
+        }
+
+        .delete {
+            background-color: #e74c3c;
+        }
+
+        .btn:hover {
+            opacity: 0.85;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="header">
+    📚 Bookstore Management System
+</div>
+
+<div class="container">
+    <h2>Welcome</h2>
+
+    <a href="BookServlet" class="btn view">View Books</a>
+    <a href="addBook.html" class="btn add">Add Book</a>
+    <a href="editBook.html" class="btn edit">Edit Book</a>
+    <a href="deleteBook.html" class="btn delete">Delete Book</a>
+</div>
+
+</body>
+</html>

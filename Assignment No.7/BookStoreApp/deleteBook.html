@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Book</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        h2 {
+            color: #e74c3c;
+        }
+
+        form {
+            background: white;
+            padding: 25px;
+            display: inline-block;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        input[type="number"] {
+            padding: 8px;
+            width: 200px;
+            margin-top: 10px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            margin-top: 15px;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #c0392b;
+        }
+
+        a {
+            display: block;
+            margin-top: 15px;
+            text-decoration: none;
+            color: #3498db;
+        }
+    </style>
+</head>
+<body>
+
+<h2>❌ Delete Book</h2>
+
+<form action="BookServlet" method="post">
+    <input type="hidden" name="action" value="delete">
+
+    Enter Book ID:<br>
+    <input type="number" name="id" required><br>
+
+    <input type="submit" value="Delete Book"
+    onclick="return confirm('Are you sure you want to delete this book?');">
+</form>
+
+<a href="BookServlet">⬅ Back to Book List</a>
+
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Book</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        h2 {
+            color: #f39c12;
+        }
+
+        form {
+            background: white;
+            padding: 25px;
+            display: inline-block;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        input {
+            padding: 8px;
+            width: 220px;
+            margin-top: 10px;
+        }
+
+        input[type="submit"] {
+            background-color: #f39c12;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #d68910;
+        }
+
+        a {
+            display: block;
+            margin-top: 15px;
+            text-decoration: none;
+            color: #3498db;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>✏️ Edit Book</h2>
+
+<form action="BookServlet" method="post">
+    <input type="hidden" name="action" value="update">
+
+    ID:<br>
+    <input type="number" name="id" required><br>
+
+    Title:<br>
+    <input type="text" name="title" required><br>
+
+    Author:<br>
+    <input type="text" name="author" required><br>
+
+    Price:<br>
+    <input type="number" step="0.01" name="price" required><br>
+
+    Quantity:<br>
+    <input type="number" name="qty" required><br>
+
+    <input type="submit" value="Update Book">
+</form>
+
+<a href="BookServlet">⬅ Back to Book List</a>
+
+</body>
+</html>
